@@ -15,9 +15,11 @@
 
         <ImageView
             android:id="@+id/ivLogo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@tools:sample/avatars" />
+            android:layout_gravity="center_horizontal"
+            android:layout_width="183dp"
+            android:layout_height="244dp"
+            android:src="@drawable/perro2"
+            />
 
         <EditText
             android:id="@+id/edtNombre"
@@ -25,7 +27,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:hint="Ingrese su Usuario" />
+            android:textSize="30sp"
+            android:hint="Ingrese su Usuario"
+            android:layout_marginBottom="25dp"/>
 
         <TextView
             android:id="@+id/textView2"
@@ -51,7 +55,8 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesion" />
+            android:text="Iniciar Sesion"
+            android:layout_marginTop="25dp"/>
     </LinearLayout>
 
 </LinearLayout>
