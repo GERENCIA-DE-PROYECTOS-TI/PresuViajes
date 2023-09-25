@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white"
-        android:layout_marginTop="250dp">
+        android:layout_marginTop="280dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,11 +37,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/martel_bold"
                 android:gravity="center_horizontal"
                 android:text="Registrese"
+                android:textAllCaps="false"
                 android:textColor="@color/orange"
-                android:fontFamily="@font/martel_bold"
-                android:textSize="30dp"/>
+                android:textSize="30dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
@@ -50,7 +52,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@color/fondo"
-            android:padding="30dp">
+            android:padding="40dp">
 
             <EditText
                 android:id="@+id/edtUsuario"
