@@ -8,18 +8,23 @@
     tools:context=".RegistroActivity"
     android:background="@color/black">
 
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:src="@drawable/logo_v2" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/white"
-        android:layout_marginTop="280dp">
+        android:background="@drawable/border">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="40dp">
+            android:layout_marginTop="40dp">
 
             <TextView
                 android:id="@+id/textView7"
@@ -30,7 +35,7 @@
                 android:text="Inicio"
                 android:textColor="@color/orange"
                 android:fontFamily="@font/martel_normal"
-                android:textSize="30dp"/>
+                android:textSize="30dp" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -39,7 +44,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/martel_bold"
                 android:gravity="center_horizontal"
-                android:text="Registrese"
+                android:text="Regístrese"
                 android:textAllCaps="false"
                 android:textColor="@color/orange"
                 android:textSize="30dp"
@@ -51,48 +56,76 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/fondo"
+            android:background="@color/white"
             android:padding="40dp">
 
             <EditText
                 android:id="@+id/edtUsuario"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:ems="10"
                 android:hint="Nombre de usuario"
-                android:inputType="text" />
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:layout_marginBottom="13dp"
+                android:elevation="5dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/usuario"
+                android:drawablePadding="10dp"/>
 
             <EditText
                 android:id="@+id/edtCorreo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:ems="10"
                 android:hint="Correo"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:layout_marginBottom="13dp"
+                android:elevation="5dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/candado"
+                android:drawablePadding="10dp"/>
 
             <EditText
                 android:id="@+id/edtCelular"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:ems="10"
                 android:hint="Celular"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:layout_marginBottom="13dp"
+                android:elevation="5dp"
+                android:background="@drawable/edittext_border"/>
 
             <EditText
                 android:id="@+id/edtContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:ems="10"
+                android:hint="Contraseña"
                 android:inputType="textPassword"
-                android:hint="Contraseña" />
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:layout_marginBottom="13dp"
+                android:elevation="5dp"
+                android:background="@drawable/edittext_border"/>
 
             <EditText
                 android:id="@+id/edtReContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:ems="10"
                 android:hint="Confirme contraseña"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:elevation="5dp"
+                android:background="@drawable/edittext_border"/>
 
             <Button
                 android:id="@+id/btnRegistrar"
