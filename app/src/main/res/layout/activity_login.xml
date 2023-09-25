@@ -22,7 +22,7 @@
             />
 
         <EditText
-            android:id="@+id/edtNombre"
+            android:id="@+id/edtUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -52,7 +52,7 @@
             android:text="¿Olvidaste tu contraseña?" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnIniciarSesion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Iniciar Sesion"

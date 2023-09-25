@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "757180825674",
+    "project_id": "planificacion-turismo-ia",
+    "storage_bucket": "planificacion-turismo-ia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757180825674:android:83539bb3702b8ba04326b3",
+        "android_client_info": {
+          "package_name": "com.gadalos.planificacion_turismo_ia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSn7HNZOQ2yU7nFykSAQKR7DUfQAzX_rE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
