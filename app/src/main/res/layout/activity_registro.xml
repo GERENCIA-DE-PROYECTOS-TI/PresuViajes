@@ -9,9 +9,9 @@
     android:background="@color/black">
 
     <ImageView
-        android:id="@+id/ivLogo"
+        android:id="@+id/ivLogoRegistro"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="230dp"
         android:src="@drawable/logo_v2" />
 
     <LinearLayout
@@ -24,10 +24,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="43dp">
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/tvInicio2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -35,106 +35,112 @@
                 android:text="Inicio"
                 android:textColor="@color/orange"
                 android:fontFamily="@font/martel_normal"
-                android:textSize="30dp" />
+                android:textSize="28dp" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/tvRegistrese2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/martel_bold"
                 android:gravity="center_horizontal"
                 android:text="Regístrese"
-                android:textAllCaps="false"
                 android:textColor="@color/orange"
-                android:textSize="30dp"
+                android:fontFamily="@font/martel_bold"
+                android:textSize="28dp"
+                android:textAllCaps="false"
                 android:textStyle="bold" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:background="@color/white"
+            android:orientation="vertical"
             android:padding="40dp">
 
             <EditText
-                android:id="@+id/edtUsuario"
+                android:id="@+id/edtUsuario2"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/usuario"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
                 android:ems="10"
                 android:hint="Nombre de usuario"
                 android:inputType="text"
                 android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:layout_marginBottom="13dp"
-                android:elevation="5dp"
-                android:background="@drawable/edittext_border"
-                android:drawableStart="@drawable/usuario"
-                android:drawablePadding="10dp"/>
+                android:paddingEnd="15dp" />
 
             <EditText
                 android:id="@+id/edtCorreo"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/arroba"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
                 android:ems="10"
                 android:hint="Correo"
                 android:inputType="textEmailAddress"
                 android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:layout_marginBottom="13dp"
-                android:elevation="5dp"
-                android:background="@drawable/edittext_border"
-                android:drawableStart="@drawable/candado"
-                android:drawablePadding="10dp"/>
+                android:paddingEnd="15dp" />
 
             <EditText
                 android:id="@+id/edtCelular"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/telefono"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
                 android:ems="10"
                 android:hint="Celular"
                 android:inputType="phone"
                 android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:layout_marginBottom="13dp"
-                android:elevation="5dp"
-                android:background="@drawable/edittext_border"/>
+                android:paddingEnd="15dp" />
 
             <EditText
-                android:id="@+id/edtContrasena"
+                android:id="@+id/edtContrasena2"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/candado"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
                 android:ems="10"
                 android:hint="Contraseña"
                 android:inputType="textPassword"
                 android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:layout_marginBottom="13dp"
-                android:elevation="5dp"
-                android:background="@drawable/edittext_border"/>
+                android:paddingEnd="15dp" />
 
             <EditText
                 android:id="@+id/edtReContrasena"
                 android:layout_width="match_parent"
-                android:layout_height="38dp"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/candado"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
                 android:ems="10"
                 android:hint="Confirme contraseña"
                 android:inputType="textPassword"
                 android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:elevation="5dp"
-                android:background="@drawable/edittext_border"/>
+                android:paddingEnd="15dp" />
 
             <Button
                 android:id="@+id/btnRegistrar"
-                android:layout_width="wrap_content"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="25dp"
+                android:backgroundTint="@color/orange"
                 android:text="Registrar"
-                android:backgroundTint="@color/orange"/>
+                android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>
