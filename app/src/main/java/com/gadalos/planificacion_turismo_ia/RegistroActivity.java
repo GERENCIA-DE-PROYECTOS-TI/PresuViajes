@@ -82,8 +82,8 @@ public class RegistroActivity extends AppCompatActivity {
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                String id = mAuth.getCurrentUser().getUid();
                 Map<String, Object> map = new HashMap<>();
-                int id = 1;
                 map.put("id", id );
                 map.put("nombre", username);
                 map.put("correo", email);
