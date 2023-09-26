@@ -83,6 +83,7 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 Map<String, Object> map = new HashMap<>();
+                int id = 1;
                 map.put("id", id );
                 map.put("nombre", username);
                 map.put("correo", email);

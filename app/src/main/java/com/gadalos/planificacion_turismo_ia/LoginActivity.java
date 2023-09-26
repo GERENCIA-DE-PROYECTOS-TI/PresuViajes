@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
         edtUsuario = (EditText) findViewById(R.id.edtUsuario);
         edtContrasena = (EditText) findViewById(R.id.edtContrasena);
-        btnIniciarSesion = (Button) findViewById(R.id.btnIniciarSesion);
+        btnIniciarSesion = (Button) findViewById(R.id.btnIniciar);
 
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
