@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class RegistroActivity extends AppCompatActivity {
 
-    private EditText edtUsuario, edtCorreo, edtCelular, edtContrasena, edtReContrasena;
+    private EditText edtUsuario2, edtCorreo, edtCelular, edtContrasena2, edtReContrasena;
     private Button btnRegistrar;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth mAuth;
@@ -36,10 +36,10 @@ public class RegistroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
         //Conectandos mediante los id
-        edtUsuario = (EditText) findViewById(R.id.edtUsuario);
+        edtUsuario2 = (EditText) findViewById(R.id.edtUsuario2);
         edtCorreo = (EditText) findViewById(R.id.edtCorreo);
         edtCelular = (EditText) findViewById(R.id.edtCelular);
-        edtContrasena = (EditText) findViewById(R.id.edtContrasena);
+        edtContrasena2 = (EditText) findViewById(R.id.edtContrasena2);
         edtReContrasena = (EditText) findViewById(R.id.edtReContrasena);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
 
@@ -57,10 +57,10 @@ public class RegistroActivity extends AppCompatActivity {
 
     public void registrar(){
         //Convertimos a String debido a que debedemos comprobar si estan vacios los campos
-        String username = edtUsuario.getText().toString().trim();
+        String username = edtUsuario2.getText().toString().trim();
         String email = edtCorreo.getText().toString().trim();
         String phone = edtCelular.getText().toString().trim();
-        String password = edtContrasena.getText().toString().trim();
+        String password = edtContrasena2.getText().toString().trim();
         String repassword = edtReContrasena.getText().toString().trim();
         //Validamos si todos los campos esta llenos
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || phone.isEmpty() || repassword.isEmpty()) {

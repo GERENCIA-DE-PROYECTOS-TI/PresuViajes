@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             if (username.equals("dcatunta") && password.equals("987654")){
                 Toast.makeText(LoginActivity.this, "Exito al Validar los Datos", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                 startActivity(intent);
             }else {
                 Toast.makeText(LoginActivity.this, "Error al Iniciar Sesión", Toast.LENGTH_SHORT).show();
