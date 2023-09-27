@@ -97,7 +97,7 @@
                 android:fontFamily="@font/martel_normal"
                 android:text="¿Olvidaste tu contraseña?"
                 android:textColor="@color/orange"
-                android:textSize="18sp" />
+                android:textSize="17sp" />
 
             <Button
                 android:id="@+id/btnIniciar"

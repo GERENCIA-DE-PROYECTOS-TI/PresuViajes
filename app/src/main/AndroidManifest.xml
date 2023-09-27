@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Planificacionturismoia"
         tools:targetApi="31">
         <activity
-            android:name=".PrincipalActivity"
+            android:name=".CodigoVerificacion"
             android:exported="false" />
         <activity
             android:name=".CambiarContrasenaActivity"
@@ -23,7 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".RegistroActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

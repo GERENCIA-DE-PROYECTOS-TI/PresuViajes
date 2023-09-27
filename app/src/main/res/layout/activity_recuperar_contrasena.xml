@@ -1,10 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecuperarContrasenaActivity"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
     android:background="@color/black">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/ivLogoRecuperarContraseña"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/candado_encriptado" />
+
+    <TextView
+        android:id="@+id/tvRecuperarContrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
+        android:fontFamily="@font/martel_normal"
+        android:text="¿Tienes problemas para iniciar sesión?"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/white"
+        android:orientation="vertical"
+        android:background="@drawable/border">
+
+        <TextView
+            android:id="@+id/tvTextoRecuperarContrasena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/martel_normal"
+            android:lineSpacingExtra="-13sp"
+            android:text="Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta."
+            android:textAlignment="center"
+            android:textColor="@color/brown"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/edtCorreo2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="13dp"
+            android:background="@drawable/edittext_border"
+            android:drawableStart="@drawable/arroba"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:ems="10"
+            android:hint="Correo electrónico"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="40dp"/>
+
+        <Button
+            android:id="@+id/btnEnviarEnlace"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/orange"
+            android:text="Enviar enlace"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/martel_normal"
+            android:text="───────────── o ─────────────"
+            android:textColor="@color/brown"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/btnCrearCuentaNueva"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/orange"
+            android:text="Crear cuenta nueva"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnVolverInicioSesion"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/orange"
+            android:text="Volver al inicio de sesión"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
