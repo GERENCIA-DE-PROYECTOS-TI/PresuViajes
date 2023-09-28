@@ -9,9 +9,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class PrincipalActivity extends AppCompatActivity {
     private TextView tvUsuario;
     private Button btnCerrarSesion;
+    FirebaseAuth mAuth;
+    FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,9 @@ public class PrincipalActivity extends AppCompatActivity {
         tvUsuario = (TextView) findViewById(R.id.tvUsuario);
         btnCerrarSesion = (Button) findViewById(R.id.btnCerrarSesion);
 
+        mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
+
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,7 +37,9 @@ public class PrincipalActivity extends AppCompatActivity {
         });
     }
     public void cerrarSesion(){
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        mAuth.signOut();
+        finish();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         Toast.makeText(this, "Sesión Cerrada con Exito", Toast.LENGTH_SHORT).show();
     }

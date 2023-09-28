@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +26,7 @@ import java.util.Map;
 public class RegistroActivity extends AppCompatActivity {
 
     private EditText edtUsuario2, edtCorreo, edtCelular, edtContrasena2, edtReContrasena;
+    private TextView tvInicio2;
     private Button btnRegistrar;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth mAuth;
@@ -42,43 +44,54 @@ public class RegistroActivity extends AppCompatActivity {
         edtContrasena2 = (EditText) findViewById(R.id.edtContrasena2);
         edtReContrasena = (EditText) findViewById(R.id.edtReContrasena);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
+        tvInicio2 = (TextView) findViewById(R.id.tvInicio2);
 
         //Conexion con el Firestore
         mFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
+        tvInicio2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Acceder al Login
+                Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                registrar();
             }
         });
     }
 
     public void registrar(){
-        //Convertimos a String debido a que debedemos comprobar si estan vacios los campos
+        //Convertimos a String debido a que debemos comprobar si están vacíos los campos
         String username = edtUsuario2.getText().toString().trim();
         String email = edtCorreo.getText().toString().trim();
         String phone = edtCelular.getText().toString().trim();
         String password = edtContrasena2.getText().toString().trim();
         String repassword = edtReContrasena.getText().toString().trim();
-        //Validamos si todos los campos esta llenos
+
+        // Validar que todos los campos estén llenos y que las contraseñas coincidan
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || phone.isEmpty() || repassword.isEmpty()) {
-            //Mostramos un mensaje para ver que se llenen los campos
-            Toast.makeText(RegistroActivity.this, "Complete los campos vacios", Toast.LENGTH_SHORT).show();
+            // Mostrar un mensaje para que se llenen los campos
+            Toast.makeText(RegistroActivity.this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
+        } else if (!password.equals(repassword)) {
+            // Mostrar un mensaje si las contraseñas no coinciden
+            Toast.makeText(RegistroActivity.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+        } else if (password.length() < 8) { // Validar longitud mínima de contraseña (puedes ajustar esto)
+            Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
         } else {
-            if (password == repassword){
-                registrarUsuario(username, email, phone, password);
-
-            }else {
-                Toast.makeText(RegistroActivity.this, "La contraseña ingresada no concuerda con el otro campo", Toast.LENGTH_SHORT).show();
-            }
-
+            // Si pasa todas las validaciones, proceder a registrar el usuario
+            registrarUsuario(username, email, phone, password);
+            Toast.makeText(RegistroActivity.this, "Pruebita con exito", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void registrarUsuario(String username, String email, String phone, String password) {
-
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -89,12 +102,11 @@ public class RegistroActivity extends AppCompatActivity {
                 map.put("correo", email);
                 map.put("telefono", phone);
                 map.put("contrasena", password);
-
                 mFirestore.collection("usuario").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         finish();
-                        startActivity(new Intent(RegistroActivity.this, MainActivity.class));
+                        startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
                         Toast.makeText(RegistroActivity.this, "El Usuario se ha registrado con exito", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -105,6 +117,5 @@ public class RegistroActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 }

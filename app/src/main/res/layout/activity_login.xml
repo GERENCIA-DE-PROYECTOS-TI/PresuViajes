@@ -64,12 +64,12 @@
                 android:layout_height="40dp"
                 android:layout_marginBottom="13dp"
                 android:background="@drawable/edittext_border"
-                android:drawableStart="@drawable/usuario"
+                android:drawableStart="@drawable/arroba"
                 android:drawablePadding="10dp"
                 android:elevation="5dp"
                 android:ems="10"
-                android:hint="Usuario"
-                android:inputType="text"
+                android:hint="Correo"
+                android:inputType="textEmailAddress"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp" />
 
