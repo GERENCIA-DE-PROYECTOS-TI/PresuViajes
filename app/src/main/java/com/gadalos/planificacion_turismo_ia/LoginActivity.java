@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     finish();
-                    startActivity(new Intent(LoginActivity.this, CambiarContrasenaActivity.class));
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                     Toast.makeText(LoginActivity.this, "Bienvenido de nuevo", Toast.LENGTH_SHORT).show();
                 }else {
 //                    Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null){
-            startActivity(new Intent(LoginActivity.this, CambiarContrasenaActivity.class));
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             finish();
         }
     }
