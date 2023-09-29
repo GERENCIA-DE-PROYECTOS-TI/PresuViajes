@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class PrincipalActivity extends AppCompatActivity {
+public class CodigoVerificacion extends AppCompatActivity {
     private TextView tvUsuario;
     private Button btnCerrarSesion;
     FirebaseAuth mAuth;
@@ -21,26 +21,26 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+        setContentView(R.layout.activity_codigo_verificacion);
 
-        tvUsuario = (TextView) findViewById(R.id.tvUsuario);
-        btnCerrarSesion = (Button) findViewById(R.id.btnCerrarSesion);
-
-        mAuth = FirebaseAuth.getInstance();
-        mFirestore = FirebaseFirestore.getInstance();
-
-        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cerrarSesion();
-            }
-        });
+//        tvUsuario = (TextView) findViewById(R.id.tvUsuario);
+//        btnCerrarSesion = (Button) findViewById(R.id.btnCerrarSesion);
+//
+//        mAuth = FirebaseAuth.getInstance();
+//        mFirestore = FirebaseFirestore.getInstance();
+//
+//        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cerrarSesion();
+//            }
+//        });
     }
-    public void cerrarSesion(){
-        mAuth.signOut();
-        finish();
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(intent);
-        Toast.makeText(this, "Sesión Cerrada con Exito", Toast.LENGTH_SHORT).show();
-    }
+//    public void cerrarSesion(){
+//        mAuth.signOut();
+//        finish();
+//        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//        startActivity(intent);
+//        Toast.makeText(this, "Sesión Cerrada con Exito", Toast.LENGTH_SHORT).show();
+//    }
 }

@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edtUsuario, edtContrasena;
-    private TextView tvRegistrese;
+    private TextView tvRegistrese, tvOlvidoContrasena;
     private Button btnIniciarSesion;
     public FirebaseAuth mAuth;
 
@@ -34,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         edtContrasena = (EditText) findViewById(R.id.edtContrasena);
         btnIniciarSesion = (Button) findViewById(R.id.btnIniciar);
         tvRegistrese = (TextView) findViewById(R.id.tvRegistrese);
+        tvOlvidoContrasena = (TextView) findViewById(R.id.tvOlvidoContrasena);
 
         mAuth = FirebaseAuth.getInstance();
         tvRegistrese.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +43,17 @@ public class LoginActivity extends AppCompatActivity {
                 //Acceder al Registro
                 Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        tvOlvidoContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Acceder a Recuperar Contraseña
+                Intent intent = new Intent(LoginActivity.this, RecuperarContrasenaActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -73,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     finish();
-                    startActivity(new Intent(LoginActivity.this, PrincipalActivity.class));
+                    startActivity(new Intent(LoginActivity.this, CambiarContrasenaActivity.class));
                     Toast.makeText(LoginActivity.this, "Bienvenido de nuevo", Toast.LENGTH_SHORT).show();
                 }else {
 //                    Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
@@ -88,12 +100,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    //Si la cuenta ya esta iniciada pasar sin iniciar sesion
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null){
-            startActivity(new Intent(LoginActivity.this, PrincipalActivity.class));
+            startActivity(new Intent(LoginActivity.this, CambiarContrasenaActivity.class));
             finish();
         }
     }
