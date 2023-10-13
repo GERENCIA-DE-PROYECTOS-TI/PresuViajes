@@ -1,0 +1,125 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tvFrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/martel_normal"
+        android:text="¡Llegó la hora de viajar!"
+        android:textSize="18sp" />
+
+    <ImageButton
+        android:id="@+id/ivPerfilUsuario"
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/tvFrase"
+        android:backgroundTint="#FFFFFF"
+        android:src="@drawable/perfil_de_usuario" />
+
+    <TextView
+        android:id="@+id/tvNuestrosPaquetes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/martel_normal"
+        android:text="Nuestros paquetes"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- Scroll View ajustado para permitir superposición del botón flotante -->
+    <ImageView
+        android:id="@+id/imgViajero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNuestrosPaquetes"
+        android:layout_alignStart="@id/tvNuestrosPaquetes"
+        android:layout_marginStart="189dp"
+        android:layout_marginTop="-54dp"
+        android:src="@drawable/viajero" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/imgViajero">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Destino 1 y Destino 4 en la misma fila -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFFEFE"
+                    android:src="@drawable/destino4" />
+
+                <ImageButton
+                    android:id="@+id/imageButton1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@drawable/destino1" />
+            </LinearLayout>
+
+            <!-- Destino 2 y Destino 3 en la misma fila -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@drawable/destino2" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@drawable/destino3" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Botón flotante que se superpone a todo -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Abrir ventana de navegación"
+        app:backgroundTint="#FBC02D"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/avion"
+        app:shapeAppearanceOverlay="@style/CircularShape" />
+</RelativeLayout>
