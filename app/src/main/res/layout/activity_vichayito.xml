@@ -1,0 +1,165 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VichayitoActivity">
+
+  <ImageView
+      android:id="@+id/imagenVichayito"
+      android:layout_width="match_parent"
+      android:layout_height="498dp"
+      android:layout_alignParentTop="true"
+      android:layout_marginTop="-27dp"
+      android:src="@drawable/vichayito"
+      android:visibility="visible" />
+
+  <ImageButton
+      android:id="@+id/imageButtonRetroceder"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentStart="true"
+      android:layout_alignParentTop="true"
+      android:layout_marginStart="16dp"
+      android:layout_marginTop="16dp"
+      android:layout_marginEnd="16dp"
+      android:layout_marginBottom="16dp"
+      android:backgroundTint="#00FFFFFF"
+      android:elevation="2dp"
+      android:src="@drawable/retroceder" />
+
+  <ImageButton
+      android:id="@+id/imageButtonInfo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentBottom="true"
+      android:layout_marginEnd="29dp"
+      android:layout_marginBottom="383dp"
+      android:backgroundTint="#00FFFFFF"
+      android:elevation="2dp"
+      android:src="@drawable/info" />
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@+id/imagenVichayito"
+      android:layout_marginTop="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/txtTitulo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="0dp"
+          android:fontFamily="@font/martel_normal"
+          android:padding="16dp"
+          android:text="Descripción"
+          android:textColor="#000000"
+          android:textSize="25sp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/txtDescripcion"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/martel_normal"
+          android:padding="16dp"
+          android:text="Descubre Cuzco, la joya colonial de los Andes peruanos, y luego explora la enigmática Machu Picchu, la ciudad perdida de los incas, en un viaje que te llevará a través de la historia y la maravilla natural de Perú."
+          android:textColor="#000000"
+          android:textSize="16sp" />
+
+      <TextView
+          android:id="@+id/txtTitulo2"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/martel_normal"
+          android:padding="16dp"
+          android:text="Incluye"
+          android:textColor="#000000"
+          android:textSize="25sp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:id="@+id/txtDescripcion1"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/martel_normal"
+          android:padding="16dp"
+          android:text="- 03 noches de alojamiento\n- 03 desayunos\n- 02 almuerzos\n- Traslados aeropuerto\n- 2 tours half day\n- 2 tours full day"
+          android:textColor="#000000"
+          android:textSize="16sp"/>
+
+      <TextView
+          android:id="@+id/txtTitulo3"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/martel_normal"
+          android:padding="16dp"
+          android:text="Fotos"
+          android:textColor="#000000"
+          android:textSize="25sp"
+          android:textStyle="bold" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+
+        <!-- Agrega tus imágenes aquí -->
+        <ImageView
+            android:visibility="visible"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/vichayito1" />
+
+        <ImageView
+            android:visibility="visible"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/vichayito2" />
+
+        <ImageView
+            android:visibility="visible"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/vichayito3" />
+
+        <ImageView
+            android:visibility="visible"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/vichayito4" />
+
+        <ImageView
+            android:visibility="visible"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/vichayito5" />
+
+      </LinearLayout>
+
+      <TextView
+          android:id="@+id/txtTitulo4"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/martel_normal"
+          android:padding="16dp"
+          android:text=""
+          android:textColor="#000000"
+          android:textSize="25sp"
+          android:textStyle="bold" />
+
+    </LinearLayout>
+  </ScrollView>
+</RelativeLayout>
