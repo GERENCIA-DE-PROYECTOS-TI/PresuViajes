@@ -56,6 +56,7 @@ public class RegistroActivity extends AppCompatActivity {
                 //Acceder al Login
                 Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -87,7 +88,7 @@ public class RegistroActivity extends AppCompatActivity {
         } else {
             // Si pasa todas las validaciones, proceder a registrar el usuario
             registrarUsuario(username, email, phone, password);
-            Toast.makeText(RegistroActivity.this, "Pruebita con exito", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegistroActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -105,9 +106,9 @@ public class RegistroActivity extends AppCompatActivity {
                 mFirestore.collection("usuario").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        finish();
                         startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
                         Toast.makeText(RegistroActivity.this, "El Usuario se ha registrado con exito", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
