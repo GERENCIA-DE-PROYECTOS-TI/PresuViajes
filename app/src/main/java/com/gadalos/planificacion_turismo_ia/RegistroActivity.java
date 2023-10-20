@@ -76,6 +76,12 @@ public class RegistroActivity extends AppCompatActivity {
         String password = edtContrasena2.getText().toString().trim();
         String repassword = edtReContrasena.getText().toString().trim();
 
+        // Expresión regular para validar una dirección de correo electrónico
+        String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$";
+
+        // Expresión regular para validar un número de celular de 9 dígitos
+        String celularPattern = "^[0-9]{9}$";
+
         // Validar que todos los campos estén llenos y que las contraseñas coincidan
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || phone.isEmpty() || repassword.isEmpty()) {
             // Mostrar un mensaje para que se llenen los campos
@@ -85,10 +91,22 @@ public class RegistroActivity extends AppCompatActivity {
             Toast.makeText(RegistroActivity.this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
         } else if (password.length() < 8) { // Validar longitud mínima de contraseña (puedes ajustar esto)
             Toast.makeText(RegistroActivity.this, "La contraseña debe tener al menos 8 caracteres", Toast.LENGTH_SHORT).show();
+        }  else if (!email.matches(emailPattern)) {
+            // Mostrar un mensaje si la dirección de correo electrónico no es válida
+            Toast.makeText(RegistroActivity.this, "Correo electrónico no válido", Toast.LENGTH_SHORT).show();
+        } else if (!phone.matches(celularPattern)) {
+            Toast.makeText(RegistroActivity.this, "Se necesita solo 9 dígitos númericos", Toast.LENGTH_SHORT).show();
         } else {
             // Si pasa todas las validaciones, proceder a registrar el usuario
             registrarUsuario(username, email, phone, password);
             Toast.makeText(RegistroActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
+
+            // Limpiar los campos después del registro
+            edtUsuario2.setText("");
+            edtCorreo.setText("");
+            edtCelular.setText("");
+            edtContrasena2.setText("");
+            edtReContrasena.setText("");
         }
     }
 
