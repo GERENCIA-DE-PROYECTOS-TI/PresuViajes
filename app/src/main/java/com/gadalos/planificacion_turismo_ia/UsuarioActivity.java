@@ -12,25 +12,25 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UsuarioActivity extends AppCompatActivity {
-    private TextView txtUsuario, textNomComp, textCorreo, textCel;
-    private ImageView imageView;
+    private EditText textNombreEditar, textCorreoEditar, textCelEditar;
+    private ImageView ivFotoEditar;
     public FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
-    private ImageButton btnEditar, imageButtonRetroceder;
+    private ImageButton imageButtonRetroceder, imageButtonEditarFoto, imageButtomGuardar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario);
 
-        imageView = (ImageView) findViewById(R.id.imageView);
+        ivFotoEditar = (ImageView) findViewById(R.id.ivFotoEditar);
 
-        txtUsuario = (TextView) findViewById(R.id.textNombre);
-        textNomComp = (TextView) findViewById(R.id.textNomComp);
-        textCorreo = (TextView) findViewById(R.id.textCorreo);
-        textCel = (TextView) findViewById(R.id.textCel);
+        textNombreEditar = (EditText) findViewById(R.id.textNombreEditar);
+        textCorreoEditar = (EditText) findViewById(R.id.textCorreoEditar);
+        textCelEditar = (EditText) findViewById(R.id.textCelEditar);
 
-        btnEditar = (ImageButton) findViewById(R.id.btnEditar);
+        imageButtomGuardar = (ImageButton) findViewById(R.id.imageButtomGuardar);
+        imageButtonEditarFoto = (ImageButton) findViewById(R.id.imageButtonEditarFoto);
         imageButtonRetroceder = (ImageButton) findViewById(R.id.imageButtonRetroceder);
 
         //Conexion con el Firestore

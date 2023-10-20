@@ -21,124 +21,131 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#00FFFFFF"
-            android:elevation="2dp"
             android:src="@drawable/retroceder" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:id="@+id/ivFotoEditar"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="28dp"
             android:src="@drawable/perfil" />
 
-        <TextView
-            android:id="@+id/textNombre"
+        <ImageButton
+            android:id="@+id/imageButtonEditarFoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="-180dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginEnd="245dp"
-            android:text="Maria"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_marginStart="235dp"
+            android:layout_marginTop="220dp"
+            android:background="@drawable/circular_background"
+            android:src="@drawable/camara" />
 
         <TextView
-            android:id="@+id/textDatos"
+            android:id="@+id/textDatosTitulo"
             android:layout_width="167dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textNombre"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="300dp"
             android:text="Mis Datos"
-            android:textSize="34sp" />
+            android:fontFamily="@font/martel_normal"
+            android:textSize="23sp"/>
 
         <ImageButton
-            android:id="@+id/btnEditar"
+            android:id="@+id/imageButtomGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textDatos"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="-51dp"
-            android:layout_toEndOf="@+id/textDatos"
-            android:backgroundTint="#FFB000"
+            android:layout_marginStart="330dp"
+            android:layout_marginTop="302dp"
+            android:background="#FFFFFF"
             android:onClick="editar"
-            android:src="@drawable/editar" />
+            android:src="@drawable/guardar_perfil" />
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="35dp"
-            android:layout_height="32dp"
+            android:layout_height="35dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="315dp"
-            android:src="@drawable/nombre_usuario" />
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="355dp"
+            android:src="@drawable/nombre_usuario2" />
 
-        <TextView
-            android:id="@+id/textNomComp"
-            android:layout_width="187dp"
-            android:layout_height="wrap_content"
+        <EditText
+            android:id="@+id/textNombreEditar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_border"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="322dp"
-            android:layout_marginEnd="114dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginTop="355dp"
             android:layout_toEndOf="@+id/imageView3"
-            android:text="Maria Viajero" />
+            android:text="Maria Viajero"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp"/>
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="35dp"
-            android:layout_height="32dp"
+            android:layout_height="35dp"
             android:layout_below="@+id/imageView3"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="35dp"
-            android:src="@drawable/correo"
-            />
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/correo2" />
 
-        <TextView
-            android:id="@+id/textCorreo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textNomComp"
+        <EditText
+            android:id="@+id/textCorreoEditar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_border"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_below="@+id/textNombreEditar"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="106dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginTop="14dp"
             android:layout_toEndOf="@+id/imageView5"
-            android:text="MariaViajero10@gmail.com" />
+            android:text="MariaViajero10@gmail.com"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp"/>
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="35dp"
-            android:layout_height="32dp"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
             android:layout_below="@+id/imageView5"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="49dp"
-            android:layout_marginTop="34dp"
-            android:src="@drawable/cel" />
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/cel2" />
 
-        <TextView
-            android:id="@+id/textCel"
-            android:layout_width="182dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textCorreo"
+        <EditText
+            android:id="@+id/textCelEditar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edittext_border"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_below="@+id/textCorreoEditar"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="47dp"
-            android:layout_marginEnd="110dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="38dp"
+            android:layout_marginTop="14dp"
             android:layout_toEndOf="@+id/imageView8"
-            android:text="996458735" />
-
-
+            android:text="996458735"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp" />
 
     </RelativeLayout>
 

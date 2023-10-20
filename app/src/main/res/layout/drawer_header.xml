@@ -89,7 +89,7 @@
             android:src="@drawable/cel" />
 
         <TextView
-            android:id="@+id/textCel"
+            android:id="@+id/textCelPerfil"
             android:layout_width="182dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textCorreoPerfil"
