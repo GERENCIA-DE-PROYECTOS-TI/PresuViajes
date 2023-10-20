@@ -63,12 +63,12 @@ public class RegistroActivity extends AppCompatActivity {
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registrar();
+                validar();
             }
         });
     }
 
-    public void registrar(){
+    public void validar(){
         //Convertimos a String debido a que debemos comprobar si están vacíos los campos
         String username = edtUsuario2.getText().toString().trim();
         String email = edtCorreo.getText().toString().trim();
@@ -100,7 +100,7 @@ public class RegistroActivity extends AppCompatActivity {
             // Si pasa todas las validaciones, proceder a registrar el usuario
             registrarUsuario(username, email, phone, password);
             Toast.makeText(RegistroActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-
+            mAuth.signOut();
             // Limpiar los campos después del registro
             edtUsuario2.setText("");
             edtCorreo.setText("");
@@ -136,5 +136,6 @@ public class RegistroActivity extends AppCompatActivity {
                 });
             }
         });
+
     }
 }

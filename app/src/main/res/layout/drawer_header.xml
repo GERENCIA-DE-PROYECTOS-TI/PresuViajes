@@ -51,7 +51,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="345dp"
             android:layout_toEndOf="@+id/imageView3"
-            android:text="Maria Viajero"
+
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp"/>
 
@@ -74,7 +74,7 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="28dp"
             android:layout_toEndOf="@+id/imageView5"
-            android:text="MariaViajero10@gmail.com"
+
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp"/>
 
@@ -97,7 +97,7 @@
             android:layout_marginStart="17dp"
             android:layout_marginTop="28dp"
             android:layout_toEndOf="@+id/imageView8"
-            android:text="996458735"
+
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp" />
 
