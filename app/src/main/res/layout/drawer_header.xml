@@ -51,7 +51,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="345dp"
             android:layout_toEndOf="@+id/imageView3"
-
+            android:text="Fabian Alvarez"
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp"/>
 
@@ -74,7 +74,7 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="28dp"
             android:layout_toEndOf="@+id/imageView5"
-
+            android:text="falvarezl@autonoma.edu.pe"
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp"/>
 
@@ -97,7 +97,7 @@
             android:layout_marginStart="17dp"
             android:layout_marginTop="28dp"
             android:layout_toEndOf="@+id/imageView8"
-
+            android:text="996458735"
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp" />
 
@@ -129,7 +129,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="37dp"
             android:layout_marginTop="44dp"
-            android:src="@drawable/perfil" />
+            android:src="@drawable/fabi_prueba_v1" />
 
     </RelativeLayout>
 </FrameLayout>
