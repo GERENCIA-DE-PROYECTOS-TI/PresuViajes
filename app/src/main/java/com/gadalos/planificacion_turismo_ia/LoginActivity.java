@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
                     finish();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    Toast.makeText(LoginActivity.this, "Bienvenido de nuevo", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
                 }else {
 //                    Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
@@ -97,11 +97,10 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Error al Ingresar", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     //Si la cuenta ya esta iniciada pasar sin iniciar sesion
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -109,5 +108,5 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             finish();
         }
-    }
+    }*/
 }
