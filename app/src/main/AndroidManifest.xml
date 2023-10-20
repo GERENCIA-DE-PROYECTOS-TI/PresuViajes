@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Planificacionturismoia"
         tools:targetApi="31">
         <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+        <activity
             android:name=".DrawerHeader"
             android:exported="false" />
         <activity
@@ -35,10 +38,13 @@
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CodigoVerificacion"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".CambiarContrasenaActivity"
             android:exported="false" />
@@ -51,7 +57,8 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-        <activity android:name=".UsuarioActivity"
+        <activity
+            android:name=".UsuarioActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
