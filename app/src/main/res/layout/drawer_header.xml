@@ -11,41 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <TextView
-            android:id="@+id/textNombre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="-148dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginEnd="245dp"
-            android:layout_toEndOf="@+id/imageView"
-            android:text="Maria"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/textDatos"
+            android:id="@+id/textDatosTitulo"
             android:layout_width="167dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textNombre"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="290dp"
             android:text="Mis Datos"
-            android:textSize="34sp" />
+            android:fontFamily="@font/martel_normal"
+            android:textSize="23sp"/>
 
         <ImageButton
             android:id="@+id/btnEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textDatos"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="-51dp"
-            android:layout_toEndOf="@+id/textDatos"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="283dp"
             android:backgroundTint="#FFB000"
             android:onClick="editar"
             android:src="@drawable/editar" />
@@ -53,78 +35,78 @@
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="35dp"
-            android:layout_height="32dp"
+            android:layout_height="35dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="315dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="340dp"
             android:src="@drawable/nombre_usuario" />
 
         <TextView
-            android:id="@+id/textNomComp"
+            android:id="@+id/textNombrePerfil"
             android:layout_width="187dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="322dp"
-            android:layout_marginEnd="114dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="345dp"
             android:layout_toEndOf="@+id/imageView3"
-            android:text="Maria Viajero" />
+            android:text="Maria Viajero"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp"/>
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="35dp"
-            android:layout_height="32dp"
+            android:layout_height="35dp"
             android:layout_below="@+id/imageView3"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="51dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/correo" />
 
         <TextView
-            android:id="@+id/textCorreo"
+            android:id="@+id/textCorreoPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textNomComp"
+            android:layout_below="@+id/textNombrePerfil"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="106dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="28dp"
             android:layout_toEndOf="@+id/imageView5"
-            android:text="MariaViajero10@gmail.com" />
+            android:text="MariaViajero10@gmail.com"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp"/>
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="35dp"
-            android:layout_height="32dp"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
             android:layout_below="@+id/imageView5"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="49dp"
-            android:layout_marginTop="34dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="20dp"
             android:src="@drawable/cel" />
 
         <TextView
             android:id="@+id/textCel"
             android:layout_width="182dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textCorreo"
+            android:layout_below="@+id/textCorreoPerfil"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="47dp"
-            android:layout_marginEnd="110dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="28dp"
             android:layout_toEndOf="@+id/imageView8"
-            android:text="996458735" />
+            android:text="996458735"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp" />
 
         <ImageButton
             android:id="@+id/btnCerrarSe"
             android:layout_width="wrap_content"
-            android:layout_height="58dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="406dp"
-            android:layout_marginEnd="44dp"
-            android:layout_marginBottom="39dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="245dp"
+            android:layout_marginTop="660dp"
             android:backgroundTint="#FFB000"
             android:onClick="cerrarSesion"
             android:src="@drawable/salir" />
@@ -133,19 +115,19 @@
             android:id="@+id/textCerrarSesi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="57dp"
-            android:layout_toStartOf="@+id/btnCerrarSe"
-            android:text="Cerrar Sesión" />
+            android:layout_marginStart="135dp"
+            android:layout_marginTop="670dp"
+            android:fontFamily="@font/martel_normal"
+            android:text="Cerrar Sesión"
+            android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivFotoPerfil"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="47dp"
+            android:layout_marginStart="37dp"
             android:layout_marginTop="44dp"
             android:src="@drawable/perfil" />
 
