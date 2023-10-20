@@ -107,7 +107,7 @@ public class RegistroActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         startActivity(new Intent(RegistroActivity.this, LoginActivity.class));
-                        Toast.makeText(RegistroActivity.this, "El Usuario se ha registrado con exito", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegistroActivity.this, "El Usuario se ha registrado con éxito", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {

@@ -53,10 +53,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="311dp"
+            android:layout_height="match_parent"
             android:background="@color/white"
             android:orientation="vertical"
-            android:padding="40dp">
+            android:padding="40dp"
+            android:layout_marginTop="25dp">
 
             <EditText
                 android:id="@+id/edtUsuario"
@@ -116,19 +117,19 @@
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal">
 
-            <ImageView
-                android:id="@+id/ivLogoFacebook"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:src="@drawable/facebook" />
+            <!--<ImageView
+                    android:id="@+id/ivLogoFacebook"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:src="@drawable/facebook" />
 
-            <ImageView
-                android:id="@+id/ivLogoGoogle"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:src="@drawable/google" />
+                <ImageView
+                    android:id="@+id/ivLogoGoogle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:src="@drawable/google" />-->
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>

@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = edtContrasena.getText().toString().trim();
         if (username.isEmpty() || password.isEmpty()) {
             //Mostramos un mensaje para ver que se llenen los campos
-            Toast.makeText(LoginActivity.this, "Complete los campos vacios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Complete los campos vacíos", Toast.LENGTH_SHORT).show();
         } else {
             iniciarUsuario(username, password);
 //            Toast.makeText(LoginActivity.this, "Prueba nuevo", Toast.LENGTH_SHORT).show();
@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoginActivity.this, "Error al Ingresar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();
             }
         });
     }
