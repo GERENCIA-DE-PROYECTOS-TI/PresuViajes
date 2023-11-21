@@ -51,7 +51,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="345dp"
             android:layout_toEndOf="@+id/imageView3"
-            android:text="Fabian Alvarez"
+            android:text="User Name"
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp"/>
 
@@ -74,7 +74,7 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="28dp"
             android:layout_toEndOf="@+id/imageView5"
-            android:text="falvarezl@autonoma.edu.pe"
+            android:text="user@autonoma.edu.pe"
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp"/>
 
@@ -97,7 +97,7 @@
             android:layout_marginStart="17dp"
             android:layout_marginTop="28dp"
             android:layout_toEndOf="@+id/imageView8"
-            android:text="996458735"
+            android:text="xxxxxxxxx"
             android:fontFamily="@font/martel_normal"
             android:textSize="15sp" />
 
@@ -121,15 +121,25 @@
             android:text="Cerrar Sesión"
             android:textSize="18sp" />
 
-        <ImageView
-            android:id="@+id/ivFotoPerfil"
-            android:layout_width="230dp"
-            android:layout_height="230dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginStart="37dp"
             android:layout_marginTop="44dp"
-            android:src="@drawable/fabi_prueba_v1" />
+            app:cardCornerRadius="150dp">
+
+            <ImageView
+                android:id="@+id/ivFotoPerfil"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/perfil_de_usuario" />
+
+        </androidx.cardview.widget.CardView>
+
+
 
     </RelativeLayout>
 </FrameLayout>

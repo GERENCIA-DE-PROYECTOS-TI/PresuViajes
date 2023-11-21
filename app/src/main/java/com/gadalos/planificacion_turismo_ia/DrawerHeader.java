@@ -1,7 +1,9 @@
 package com.gadalos.planificacion_turismo_ia;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +21,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 public class DrawerHeader extends RelativeLayout {
     private TextView textNombrePerfil, textCorreoPerfil, textCelPerfil;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
+    private ImageView ivFotoPerfil;
 
     public DrawerHeader(Context context) {
         super(context);
@@ -31,7 +35,7 @@ public class DrawerHeader extends RelativeLayout {
         mFirestore = FirebaseFirestore.getInstance(); // Inicializar FirebaseFirestore
         initializeViews(context);
         // Llamar a obtenerDatos() cuando se inicialice la vista
-        obtenerDatos(context);
+        //obtenerDatos(context);
     }
 
     public DrawerHeader(Context context, AttributeSet attrs) {
@@ -40,7 +44,7 @@ public class DrawerHeader extends RelativeLayout {
         mFirestore = FirebaseFirestore.getInstance(); // Inicializar FirebaseFirestore
         initializeViews(context);
         // Llamar a obtenerDatos() cuando se inicialice la vista
-        obtenerDatos(context);
+        //obtenerDatos(context);
     }
 
     public DrawerHeader(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -49,14 +53,14 @@ public class DrawerHeader extends RelativeLayout {
         mFirestore = FirebaseFirestore.getInstance(); // Inicializar FirebaseFirestore
         initializeViews(context);
         // Llamar a obtenerDatos() cuando se inicialice la vista
-        obtenerDatos(context);
+        //obtenerDatos(context);
     }
 
     private void initializeViews(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.drawer_header, this);
 
-        ImageView ivFotoPerfil;
+        ivFotoPerfil = findViewById(R.id.ivFotoPerfil);
         textNombrePerfil = findViewById(R.id.textNombrePerfil);
         textCorreoPerfil = findViewById(R.id.textCorreoPerfil);
         textCelPerfil = findViewById(R.id.textCelPerfil);
@@ -68,9 +72,14 @@ public class DrawerHeader extends RelativeLayout {
         btnCerrarSesion.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Cerrar la sesión
+                mAuth.signOut();
+
                 // Agregar el código para redirigir a LoginActivity
                 Intent intent = new Intent(getContext(), LoginActivity.class);
                 getContext().startActivity(intent);
+
+
             }
         });
 
@@ -84,37 +93,29 @@ public class DrawerHeader extends RelativeLayout {
             }
         });
     }
-    private void obtenerDatos(Context context) {
-        // Recuperar los datos del usuario actual de Firebase
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            String userUid = currentUser.getUid();
+    /*private void obtenerDatos(Context context) {
+        // Obtener el Intent asociado con la Activity actual
+        Intent intent = ((Activity) context).getIntent();
 
-            mFirestore.collection("usuario").document(userUid)
-                    .get()
-                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            if (documentSnapshot.exists()) {
-                                String nombre = documentSnapshot.getString("nombre");
-                                String correo = documentSnapshot.getString("correo");
-                                String telefono = documentSnapshot.getString("telefono");
+        // Verificar si el Intent tiene datos adicionales
+        if (intent != null && intent.getExtras() != null) {
+            Bundle bundle = intent.getExtras();
 
-                                // Muestra los datos en los campos de texto
-                                textNombrePerfil.setText(nombre);
-                                textCorreoPerfil.setText(correo);
-                                textCelPerfil.setText(telefono);
-                            } else {
-                                // No se encontraron datos
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Error al obtener los datos
-                            Toast.makeText(context, "Error al obtener los datos", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+            // Obtener los datos del Bundle
+            String nombre = bundle.getString("nombre", "");
+            String correo = bundle.getString("correo", "");
+            String photoUrl = bundle.getString("photoUrl", "");
+
+            // Hacer lo que necesites con estos datos, como mostrarlos en TextViews
+            textNombrePerfil.setText(nombre);
+            textCorreoPerfil.setText(correo);
+
+            // Aquí puedes usar una biblioteca como Picasso para cargar la imagen desde la URL
+            // (esto es solo un ejemplo, ajusta según tu implementación)
+            if (!photoUrl.isEmpty()) {
+                Picasso.get().load(photoUrl).into(ivFotoPerfil);
+            }
         }
-    }
+    }*/
+
 }

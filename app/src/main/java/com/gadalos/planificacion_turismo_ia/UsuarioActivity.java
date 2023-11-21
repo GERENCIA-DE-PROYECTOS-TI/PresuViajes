@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.HashMap;
@@ -24,7 +25,7 @@ import java.util.Map;
 
 public class UsuarioActivity extends AppCompatActivity {
     private EditText textNombreEditar, textCorreoEditar, textCelEditar;
-    private ImageView ivFotoEditar;
+    private ImageView ivFotoEditar, imageView8, imageButtonEditarFoto;
     public FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
     private ImageButton btnEditar, imageButtonRetroceder;
@@ -35,6 +36,7 @@ public class UsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_usuario);
 
         ivFotoEditar = (ImageView) findViewById(R.id.ivFotoEditar);
+        imageView8 = (ImageView) findViewById(R.id.imageView8);
 
         textNombreEditar = (EditText) findViewById(R.id.textNombreEditar);
         textCorreoEditar = (EditText) findViewById(R.id.textCorreoEditar);
@@ -42,6 +44,7 @@ public class UsuarioActivity extends AppCompatActivity {
 
         btnEditar = (ImageButton) findViewById(R.id.imageButtomGuardar);
         imageButtonRetroceder = (ImageButton) findViewById(R.id.imageButtonRetroceder);
+        imageButtonEditarFoto = (ImageButton) findViewById(R.id.imageButtonEditarFoto);
 
         //Conexion con el Firestore
         mAuth = FirebaseAuth.getInstance();
@@ -59,6 +62,7 @@ public class UsuarioActivity extends AppCompatActivity {
                 // Redirigir a la actividad principal (MainActivity)
                 Intent intent = new Intent(UsuarioActivity.this, HomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -67,6 +71,8 @@ public class UsuarioActivity extends AppCompatActivity {
         // Recuperar los datos del usuario actual de Firebase
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+
+            // Inicio de sesión con correo y contraseña
             String userUid = currentUser.getUid();
 
             mFirestore.collection("usuario").document(userUid)
@@ -78,6 +84,9 @@ public class UsuarioActivity extends AppCompatActivity {
                                 String nombre = documentSnapshot.getString("nombre");
                                 String correo = documentSnapshot.getString("correo");
                                 String telefono = documentSnapshot.getString("telefono");
+                                String foto = documentSnapshot.getString("foto");
+
+                                Picasso.get().load(currentUser.getPhotoUrl()).placeholder(R.drawable.perfil).into(ivFotoEditar);
 
                                 // Muestra los datos en los campos de texto
                                 textNombreEditar.setText(nombre);
@@ -94,8 +103,25 @@ public class UsuarioActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Error al obtener los datos", Toast.LENGTH_SHORT).show();
                         }
                     });
+
+            } else {
+            // Verificar si el usuario inició sesión con Google
+            if (currentUser.getProviderData().size() > 1) {
+                // Inicio de sesión con Google
+                String name = currentUser.getDisplayName();
+                String email = currentUser.getEmail();
+                String cel = currentUser.getPhoneNumber();
+
+                textNombreEditar.setText(name);
+                textCorreoEditar.setText(email);
+                textCelEditar.setText(cel);
+
+                Picasso.get().load(currentUser.getPhotoUrl()).placeholder(R.drawable.perfil).into(ivFotoEditar);
+            }
         }
     }
+
+
 
 
     private void guardarDatos() {

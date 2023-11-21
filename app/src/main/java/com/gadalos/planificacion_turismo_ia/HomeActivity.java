@@ -11,6 +11,9 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity {
     private TextView tvFrase;
@@ -20,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton destino4Button;
 
     private FloatingActionButton fabButton;
-    private ImageButton btnDesplegable;
+    private CircleImageView btnDesplegable;
     private PopupWindow customDropdown;
 
     @SuppressLint("MissingInflatedId")
@@ -108,6 +111,28 @@ public class HomeActivity extends AppCompatActivity {
                 customDropdown.dismiss();
             }
         });
+
+        // Llamar a obtenerDatos() cuando se inicialice la vista
+        obtenerDatos();
+    }
+
+    private void obtenerDatos() {
+        // Recuperar datos del Intent
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String nombre = bundle.getString("nombre");
+            String correo = bundle.getString("correo");
+            String cel    = bundle.getString("celular");
+            String fotoUrl = bundle.getString("foto");
+
+            // Aquí puedes usar los datos según sea necesario
+            // Por ejemplo, para mostrar la imagen en btnDesplegable usando Picasso
+            if (fotoUrl != null) {
+                Picasso.get().load(fotoUrl).into(btnDesplegable);
+            }else {
+                btnDesplegable.setImageResource(R.drawable.perfil_de_usuario);
+            }
+        }
     }
 
     public void cerrarSesion(View view) {

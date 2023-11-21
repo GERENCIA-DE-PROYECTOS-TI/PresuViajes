@@ -23,21 +23,29 @@
             android:backgroundTint="#00FFFFFF"
             android:src="@drawable/retroceder" />
 
-        <ImageView
-            android:id="@+id/ivFotoEditar"
+        <androidx.cardview.widget.CardView
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:layout_marginStart="82dp"
             android:layout_marginTop="28dp"
-            android:src="@drawable/fabi_prueba_v1" />
+            app:cardCornerRadius="150dp">
+
+            <ImageView
+                android:id="@+id/ivFotoEditar"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/perfil_de_usuario" />
+
+        </androidx.cardview.widget.CardView>
 
         <ImageButton
             android:id="@+id/imageButtonEditarFoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="235dp"
+            android:layout_marginStart="300dp"
             android:layout_marginTop="220dp"
             android:background="@drawable/circular_background"
             android:src="@drawable/camara" />

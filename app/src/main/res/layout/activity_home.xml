@@ -18,7 +18,7 @@
         android:text="¡Llegó la hora de viajar!"
         android:textSize="18sp" />
 
-    <ImageButton
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/btnDesplegable"
         android:layout_width="63dp"
         android:layout_height="wrap_content"

@@ -1,26 +1,44 @@
 {
   "project_info": {
-    "project_number": "757180825674",
-    "project_id": "planificacion-turismo-ia",
-    "storage_bucket": "planificacion-turismo-ia.appspot.com"
+    "project_number": "283257827789",
+    "project_id": "presuviajesapp",
+    "storage_bucket": "presuviajesapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:757180825674:android:83539bb3702b8ba04326b3",
+        "mobilesdk_app_id": "1:283257827789:android:0a4ec0ddbf3f12f5911484",
         "android_client_info": {
           "package_name": "com.gadalos.planificacion_turismo_ia"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "283257827789-rfq8ojcav26sgp1p6nej3liqgaik2npj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gadalos.planificacion_turismo_ia",
+            "certificate_hash": "aac907646ca959b3e490514be76265fdf9bebbc6"
+          }
+        },
+        {
+          "client_id": "283257827789-24uqnf8vqc62hmissmdtrv1rous132l8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDSn7HNZOQ2yU7nFykSAQKR7DUfQAzX_rE"
+          "current_key": "AIzaSyB7qDMo8AAcYdbVb6lbZhLXM9VdTWpd6X0"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283257827789-24uqnf8vqc62hmissmdtrv1rous132l8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
