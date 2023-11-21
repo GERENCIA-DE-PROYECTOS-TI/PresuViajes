@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        >
+
+    <ImageView
+            android:id="@+id/systemIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/bot_avatar"
+            android:contentDescription="@string/system_message"
+            android:layout_marginEnd="8dp" />
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border"
+            android:backgroundTint="#673AB7"
+            android:padding="10dp">
+
+        <TextView
+                android:id="@+id/systemMessageText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:maxWidth="200dp"
+                android:text="@string/mensaje_del_sistema" />
+
+        <TextView
+                android:id="@+id/systemMessageTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"
+
+                android:layout_marginTop="4dp"
+                android:text="@string/_10_30_am"
+                android:visibility="gone" />
+
+
+    </LinearLayout>
+</LinearLayout>
