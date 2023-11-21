@@ -1,4 +1,4 @@
-package com.yeltsin.tourapp.ui.chat;
+package com.gadalos.planificacion_turismo_ia;
 
 
 import android.view.LayoutInflater;
@@ -9,12 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.yeltsin.tourapp.model.chat.Message;
-import com.yeltsin.tourapp.model.chat.MessageRole;
-
 import java.util.List;
-
-import com.yeltsin.tourapp.R;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Message> messages;

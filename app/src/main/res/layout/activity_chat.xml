@@ -83,9 +83,8 @@
             android:id="@+id/btnEnviar"
             android:layout_width="55dp"
             android:layout_height="55dp"
-            android:src="@drawable/enviar"
             android:backgroundTint="#FFFEFE"
-            />
+            android:src="@drawable/enviar" />
     </LinearLayout>
 
 </RelativeLayout>

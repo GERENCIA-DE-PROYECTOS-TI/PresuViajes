@@ -1,4 +1,4 @@
-package com.yeltsin.tourapp.model.chat;
+package com.gadalos.planificacion_turismo_ia;
 
 public interface MessageCallback {
     void onMessageReceived(Message message);

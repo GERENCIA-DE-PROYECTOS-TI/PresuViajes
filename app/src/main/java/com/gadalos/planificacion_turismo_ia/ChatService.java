@@ -1,11 +1,7 @@
-package com.yeltsin.tourapp.service.chat;
+package com.gadalos.planificacion_turismo_ia;
 
 
 import androidx.annotation.NonNull;
-
-import com.yeltsin.tourapp.model.chat.Message;
-import com.yeltsin.tourapp.model.chat.MessageCallback;
-import com.yeltsin.tourapp.model.chat.MessageRole;
 
 import org.json.JSONArray;
 import org.json.JSONException;
