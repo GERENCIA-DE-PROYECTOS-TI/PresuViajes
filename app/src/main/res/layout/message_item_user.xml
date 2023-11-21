@@ -11,7 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/border"
+            android:background="@drawable/border2"
             android:backgroundTint="#DCDCDC"
             android:padding="10dp">
 
@@ -42,7 +42,7 @@
             android:id="@+id/systemIcon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/usuario"
+            android:src="@drawable/perfil_de_usuario"
             android:contentDescription="@string/user_message"
             android:layout_marginStart="8dp" />
 

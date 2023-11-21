@@ -1,6 +1,7 @@
 package com.gadalos.planificacion_turismo_ia;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -39,13 +40,23 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
 
         List<Message> initialMessages = new ArrayList<>();
 
-        initialMessages.add(new Message("Hola, eres un asistente virtual de viajes", MessageRole.SYSTEM));
-        initialMessages.add(new Message("Las respuestas deben ser concretas y cortas", MessageRole.SYSTEM));
+        initialMessages.add(new Message("Hola, eres un asistente virtual de viajes para  llamado travis", MessageRole.SYSTEM));
+        initialMessages.add(new Message("Las respuestas que brindes deben ser concretas y cortas", MessageRole.SYSTEM));
 
         chatService = new ChatService(initialMessages, this);
 
-        chatAdapter.addMessage(new Message("Hola, soy tu asistente virtual de viajes", MessageRole.SYSTEM));
-        chatAdapter.addMessage(new Message("¿En qué te puedo ayudar?", MessageRole.SYSTEM));
+        // Agregar el primer mensaje después de 1 segundos
+        Handler handler1 = new Handler();
+        handler1.postDelayed(() -> {
+            chatAdapter.addMessage(new Message("Hola, soy Travis tu asistente virtual de viajes", MessageRole.SYSTEM));
+        }, 1000);
+
+        // Agregar el segundo mensaje después de 2 segundos desde el primer mensaje
+        Handler handler2 = new Handler();
+        handler2.postDelayed(() -> {
+            chatAdapter.addMessage(new Message("¿En qué te puedo ayudar?", MessageRole.SYSTEM));
+        }, 2000);
+
 
         btnEnviar.setOnClickListener(v -> {
             String messageText = edtEscribirMensaje.getText().toString().trim();
