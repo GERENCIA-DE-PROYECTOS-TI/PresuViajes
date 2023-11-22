@@ -263,24 +263,27 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void iniciarUsuario(String username, String password) {
-
-        mAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    finish();
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show();
-                }else {
-//                    Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoginActivity.this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-            }
-        });
+        mAuth.signInWithEmailAndPassword(username, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if (user != null && user.isEmailVerified()) {
+                                // Verificar si la dirección de correo electrónico está verificada
+                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                finish();
+                            } else {
+                                // Si el correo electrónico no está verificado, mostrar un mensaje
+                                Toast.makeText(LoginActivity.this, "Verifica tu dirección de correo electrónico antes de iniciar sesión", Toast.LENGTH_SHORT).show();
+                                mAuth.signOut(); // Cerrar sesión si el correo electrónico no está verificado
+                            }
+                        } else {
+                            // Si el inicio de sesión falla, muestra un mensaje al usuario.
+                            Toast.makeText(LoginActivity.this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     //Si la cuenta ya esta iniciada pasar sin iniciar sesion
