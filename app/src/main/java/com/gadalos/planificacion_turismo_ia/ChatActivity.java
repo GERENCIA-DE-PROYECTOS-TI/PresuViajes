@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.vanniktech.emoji.EmojiPopup;
 import com.vanniktech.emoji.EmojiTextView;
 
@@ -25,11 +28,17 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
     private ChatAdapter chatAdapter;
     private ChatService chatService;
     private LinearLayout messageLayout;
+    public FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        //Conexion con el Firestore
+        mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
 
         recyclerView = findViewById(R.id.recyclerView);
         edtEscribirMensaje = findViewById(R.id.escribirMensaje);
@@ -74,11 +83,15 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
                 emojiPopup.toggle();
             }
         });
+        // Dentro de onCreate o donde obtienes el usuario actual
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        String userPhotoUrl = currentUser.getPhotoUrl().toString();
 
         btnEnviar.setOnClickListener(v -> {
             String messageText = edtEscribirMensaje.getText().toString().trim();
             if (!messageText.isEmpty()) {
                 Message userMessage = new Message(messageText, MessageRole.USER);
+                userMessage.setUserPhotoUrl(userPhotoUrl);
                 chatService.sendMessage(userMessage);
                 chatAdapter.addMessage(userMessage);
                 chatAdapter.addLoadingMessage();

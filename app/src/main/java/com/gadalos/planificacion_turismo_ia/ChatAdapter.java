@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Message> messages;
 
@@ -82,14 +84,23 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     static class UserMessageViewHolder extends RecyclerView.ViewHolder {
         TextView messageText;
+        CircleImageView userIcon;
 
         UserMessageViewHolder(View itemView) {
             super(itemView);
             messageText = itemView.findViewById(R.id.userMessageText); // ID de tu TextView en message_item_user.xml
+            userIcon = itemView.findViewById(R.id.userIcon);
         }
 
         void bind(Message message) {
             messageText.setText(message.getMessage());
+            if (message.getUserPhotoUrl() != null && !message.getUserPhotoUrl().isEmpty()) {
+                // Cargar la imagen del usuario usando Picasso
+                Picasso.get().load(message.getUserPhotoUrl()).placeholder(R.drawable.perfil_de_usuario).into(userIcon);
+            } else {
+                // Si no hay URL de imagen, puedes mostrar una imagen predeterminada
+                userIcon.setImageResource(R.drawable.perfil_de_usuario);
+            }
         }
     }
 

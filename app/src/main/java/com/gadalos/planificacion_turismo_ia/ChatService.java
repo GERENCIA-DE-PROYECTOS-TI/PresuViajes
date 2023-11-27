@@ -25,7 +25,7 @@ public class ChatService {
     private final MessageCallback callback;
 
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-    private final String OPEN_IA_API_KEY = "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";
+    private final String OPEN_IA_API_KEY = "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";
     private final String OPEN_IA_URL = "https://api.openai.com/v1/chat/completions";
 
     public ChatService(List<Message> initialMessages, MessageCallback callback) {
