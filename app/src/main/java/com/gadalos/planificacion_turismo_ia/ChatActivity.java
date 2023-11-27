@@ -2,12 +2,18 @@ package com.gadalos.planificacion_turismo_ia;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.vanniktech.emoji.EmojiPopup;
+import com.vanniktech.emoji.EmojiTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,9 +21,10 @@ import java.util.List;
 public class ChatActivity extends AppCompatActivity implements MessageCallback {
     private RecyclerView recyclerView;
     private EditText edtEscribirMensaje;
-    private ImageButton btnEnviar;
+    private ImageButton btnEnviar,buttonBack, emojiButton;
     private ChatAdapter chatAdapter;
     private ChatService chatService;
+    private LinearLayout messageLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +34,9 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
         recyclerView = findViewById(R.id.recyclerView);
         edtEscribirMensaje = findViewById(R.id.escribirMensaje);
         btnEnviar = findViewById(R.id.btnEnviar);
-        ImageButton buttonBack = findViewById(R.id.btnRegreso);
+        emojiButton = (ImageButton) findViewById(R.id.emojiButton);
+        messageLayout = (LinearLayout) findViewById(R.id.messageLayout);
+        buttonBack = findViewById(R.id.btnRegreso);
 
         buttonBack.setOnClickListener(v -> {
             finish();
@@ -41,6 +50,7 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
         List<Message> initialMessages = new ArrayList<>();
 
         initialMessages.add(new Message("Hola, eres un asistente virtual de viajes para  llamado travis", MessageRole.SYSTEM));
+        initialMessages.add(new Message("Posees solo 4 tipos de viajes en Peru y son Vichayito, Tarapoto, Iquitos y Cusco", MessageRole.SYSTEM));
         initialMessages.add(new Message("Las respuestas que brindes deben ser concretas y cortas", MessageRole.SYSTEM));
 
         chatService = new ChatService(initialMessages, this);
@@ -54,9 +64,16 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
         // Agregar el segundo mensaje después de 2 segundos desde el primer mensaje
         Handler handler2 = new Handler();
         handler2.postDelayed(() -> {
-            chatAdapter.addMessage(new Message("¿En qué te puedo ayudar?", MessageRole.SYSTEM));
+            chatAdapter.addMessage(new Message("¿A donde quieres viajar?", MessageRole.SYSTEM));
         }, 2000);
 
+        EmojiPopup emojiPopup = EmojiPopup.Builder.fromRootView(findViewById(R.id.messageLayout)).build(edtEscribirMensaje);
+        emojiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                emojiPopup.toggle();
+            }
+        });
 
         btnEnviar.setOnClickListener(v -> {
             String messageText = edtEscribirMensaje.getText().toString().trim();
@@ -65,6 +82,10 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
                 chatService.sendMessage(userMessage);
                 chatAdapter.addMessage(userMessage);
                 chatAdapter.addLoadingMessage();
+                EmojiTextView emojiTextView = (EmojiTextView) LayoutInflater
+                        .from(v.getContext())
+                        .inflate(R.layout.emoji_text_view, messageLayout, false);
+                messageLayout.addView(emojiTextView);
                 edtEscribirMensaje.setText("");
                 recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
             }

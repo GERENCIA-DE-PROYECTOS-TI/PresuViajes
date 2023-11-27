@@ -31,6 +31,15 @@
                 android:maxWidth="200dp"
                 android:text="@string/mensaje_del_sistema" />
 
+        <!-- Agrega un ImageView para el GIF -->
+        <ImageView
+            android:id="@+id/loadingGif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:src="@drawable/loading_gif"
+            android:layout_marginTop="8dp" />
+
         <TextView
                 android:id="@+id/systemMessageTime"
                 android:layout_width="wrap_content"

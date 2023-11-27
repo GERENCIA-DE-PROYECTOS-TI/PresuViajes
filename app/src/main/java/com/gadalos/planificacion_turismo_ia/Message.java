@@ -20,4 +20,9 @@ public class Message {
         return role.getApiValue();
     }
 
+    // Agrega un método para verificar si es un mensaje de carga sin texto
+    public boolean isLoadingMessage() {
+        return role == MessageRole.SYSTEM_LOADING;
+    }
+
 }

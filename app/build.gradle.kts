@@ -56,4 +56,5 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     implementation("com.vanniktech:emoji-google:0.7.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }

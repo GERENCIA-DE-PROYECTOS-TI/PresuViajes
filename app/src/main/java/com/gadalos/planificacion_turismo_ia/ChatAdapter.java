@@ -4,10 +4,14 @@ package com.gadalos.planificacion_turismo_ia;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -67,7 +71,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public void addLoadingMessage() {
-        messages.add(new Message("Pensando, espera un momento...", MessageRole.SYSTEM));
+        messages.add(new Message("", MessageRole.SYSTEM_LOADING));
         notifyItemInserted(messages.size() - 1);
     }
 
@@ -91,14 +95,26 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     static class SystemMessageViewHolder extends RecyclerView.ViewHolder {
         TextView messageText;
+        ImageView loadingGif;
 
         SystemMessageViewHolder(View itemView) {
             super(itemView);
             messageText = itemView.findViewById(R.id.systemMessageText); // ID de tu TextView en message_item_system.xml
+            loadingGif = itemView.findViewById(R.id.loadingGif);
         }
 
         void bind(Message message) {
-            messageText.setText(message.getMessage());
+            // Mostrar u ocultar el GIF según el tipo de mensaje
+            if (message.isLoadingMessage()) {
+                loadingGif.setVisibility(View.VISIBLE);
+                // Configurar el GIF en el ImageView usando Glide o Picasso
+                Glide.with(itemView.getContext()).load(R.drawable.loading_gif).override(110, 110).into(loadingGif);
+                messageText.setVisibility(View.GONE);
+            } else {
+                loadingGif.setVisibility(View.GONE);
+                messageText.setVisibility(View.VISIBLE);
+                messageText.setText(message.getMessage());
+            }
         }
     }
 }

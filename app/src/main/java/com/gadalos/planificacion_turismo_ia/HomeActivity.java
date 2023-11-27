@@ -101,7 +101,8 @@ public class HomeActivity extends AppCompatActivity {
         btnDesplegable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                customDropdown.showAsDropDown(btnDesplegable);
+                Intent intent = new Intent(HomeActivity.this, UsuarioActivity.class);
+                startActivity(intent);
             }
         });
 
