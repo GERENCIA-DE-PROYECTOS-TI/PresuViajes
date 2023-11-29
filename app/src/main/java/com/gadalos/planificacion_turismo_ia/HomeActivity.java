@@ -11,6 +11,9 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -25,6 +28,8 @@ public class HomeActivity extends AppCompatActivity {
     private FloatingActionButton fabButton;
     private CircleImageView btnDesplegable;
     private PopupWindow customDropdown;
+    public FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -40,6 +45,9 @@ public class HomeActivity extends AppCompatActivity {
         destino4Button = findViewById(R.id.imageButton4);
         btnDesplegable = findViewById(R.id.btnDesplegable);
         fabButton = findViewById(R.id.fabButton);
+        //Conexion con el Firestore
+        mAuth = FirebaseAuth.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
 
         // Puedes agregar acciones a tus elementos aquí
 
@@ -119,6 +127,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void obtenerDatos() {
         // Recuperar datos del Intent
+        FirebaseUser currentUser = mAuth.getCurrentUser();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             String nombre = bundle.getString("nombre");
@@ -129,9 +138,11 @@ public class HomeActivity extends AppCompatActivity {
             // Aquí puedes usar los datos según sea necesario
             // Por ejemplo, para mostrar la imagen en btnDesplegable usando Picasso
             if (fotoUrl != null) {
-                Picasso.get().load(fotoUrl).into(btnDesplegable);
+                //Picasso.get().load(fotoUrl).into(btnDesplegable);
+                Picasso.get().load(currentUser.getPhotoUrl()).placeholder(R.drawable.perfil_de_usuario).into(btnDesplegable);
             }else {
-                btnDesplegable.setImageResource(R.drawable.perfil_de_usuario);
+                Picasso.get().load(currentUser.getPhotoUrl()).placeholder(R.drawable.perfil_de_usuario).into(btnDesplegable);
+                //btnDesplegable.setImageResource(R.drawable.perfil_de_usuario);
             }
         }
     }

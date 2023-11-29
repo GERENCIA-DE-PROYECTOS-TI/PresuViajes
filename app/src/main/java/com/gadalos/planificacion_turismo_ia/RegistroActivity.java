@@ -137,7 +137,7 @@ public class RegistroActivity extends AppCompatActivity {
                         map.put("id", id);
                         map.put("nombre", username);
                         map.put("correo", email);
-                        map.put("telefono", phone);
+                        map.put("celular", phone);
                         map.put("contrasena", hashedPassword); // Almacenar el hash en lugar de la contraseña en texto plano
 
                         mFirestore.collection("usuario").document(id).set(map).addOnSuccessListener(new OnSuccessListener<Void>() {

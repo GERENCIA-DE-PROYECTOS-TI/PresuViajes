@@ -83,15 +83,15 @@ public class UsuarioActivity extends AppCompatActivity {
                             if (documentSnapshot.exists()) {
                                 String nombre = documentSnapshot.getString("nombre");
                                 String correo = documentSnapshot.getString("correo");
-                                String telefono = documentSnapshot.getString("telefono");
+                                String celular = documentSnapshot.getString("celular");
                                 String foto = documentSnapshot.getString("foto");
 
-                                Picasso.get().load(currentUser.getPhotoUrl()).placeholder(R.drawable.perfil).into(ivFotoEditar);
+                                Picasso.get().load(currentUser.getPhotoUrl()).placeholder(R.drawable.perfil_de_usuario).into(ivFotoEditar);
 
                                 // Muestra los datos en los campos de texto
                                 textNombreEditar.setText(nombre);
                                 textCorreoEditar.setText(correo);
-                                textCelEditar.setText(telefono);
+                                textCelEditar.setText(celular);
                             } else {
                                 // No se encontraron datos
                             }
@@ -144,7 +144,7 @@ public class UsuarioActivity extends AppCompatActivity {
                         Map<String, Object> nuevosDatos = new HashMap<>();
                         nuevosDatos.put("nombre", nuevoNombre);
                         nuevosDatos.put("correo", nuevoCorreo);
-                        nuevosDatos.put("telefono", nuevoTelefono);
+                        nuevosDatos.put("celular", nuevoTelefono);
 
                         // Realiza la actualización en Firestore
                         mFirestore.collection("usuario").document(userUid)
