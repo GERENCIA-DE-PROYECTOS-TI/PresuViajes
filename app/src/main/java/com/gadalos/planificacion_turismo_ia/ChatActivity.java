@@ -24,7 +24,7 @@ import java.util.List;
 public class ChatActivity extends AppCompatActivity implements MessageCallback {
     private RecyclerView recyclerView;
     private EditText edtEscribirMensaje;
-    private ImageButton btnEnviar,buttonBack, emojiButton;
+    private ImageButton btnEnviar, buttonBack, emojiButton;
     private ChatAdapter chatAdapter;
     private ChatService chatService;
     private LinearLayout messageLayout;
@@ -51,14 +51,13 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
             finish();
         });
 
-
         chatAdapter = new ChatAdapter(new ArrayList<>());
         recyclerView.setAdapter(chatAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Message> initialMessages = new ArrayList<>();
 
-        initialMessages.add(new Message("Hola, eres un asistente virtual de viajes para  llamado travis", MessageRole.SYSTEM));
+        initialMessages.add(new Message("Hola, eres un asistente virtual de viajes para llamado travis", MessageRole.SYSTEM));
         initialMessages.add(new Message("Posees solo 4 tipos de viajes en Peru y son Vichayito, Tarapoto, Iquitos y Cusco", MessageRole.SYSTEM));
         initialMessages.add(new Message("Las respuestas que brindes deben ser concretas y cortas", MessageRole.SYSTEM));
 
@@ -83,26 +82,50 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
                 emojiPopup.toggle();
             }
         });
-        // Dentro de onCreate o donde obtienes el usuario actual
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        String userPhotoUrl = currentUser.getPhotoUrl().toString();
 
         btnEnviar.setOnClickListener(v -> {
             String messageText = edtEscribirMensaje.getText().toString().trim();
             if (!messageText.isEmpty()) {
-                Message userMessage = new Message(messageText, MessageRole.USER);
-                userMessage.setUserPhotoUrl(userPhotoUrl);
-                chatService.sendMessage(userMessage);
-                chatAdapter.addMessage(userMessage);
-                chatAdapter.addLoadingMessage();
-                EmojiTextView emojiTextView = (EmojiTextView) LayoutInflater
-                        .from(v.getContext())
-                        .inflate(R.layout.emoji_text_view, messageLayout, false);
-                messageLayout.addView(emojiTextView);
-                edtEscribirMensaje.setText("");
-                recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
+                // Antes de enviar el mensaje, obten la URL de la imagen desde Firestore
+                obtenerUrlImagenFirestore(messageText);
             }
         });
+    }
+
+    private void obtenerUrlImagenFirestore(String messageText) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userUid = currentUser.getUid();
+
+            mFirestore.collection("usuario").document(userUid)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String fotoUrl = documentSnapshot.getString("foto");
+
+                            // Crea el mensaje y asigna la URL de la imagen
+                            Message userMessage = new Message(messageText, MessageRole.USER);
+                            userMessage.setUserPhotoUrl(fotoUrl);
+
+                            // Envía el mensaje al servicio de chat
+                            chatService.sendMessage(userMessage);
+
+                            // Actualiza la interfaz de usuario
+                            chatAdapter.addMessage(userMessage);
+                            chatAdapter.addLoadingMessage();
+                            EmojiTextView emojiTextView = (EmojiTextView) LayoutInflater
+                                    .from(getApplicationContext())
+                                    .inflate(R.layout.emoji_text_view, messageLayout, false);
+                            messageLayout.addView(emojiTextView);
+                            edtEscribirMensaje.setText("");
+                            recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        // Maneja el error al obtener la URL de la imagen
+                        // Puedes mostrar un mensaje de error o tomar alguna acción apropiada
+                    });
+        }
     }
 
     @Override

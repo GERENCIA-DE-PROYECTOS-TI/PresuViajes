@@ -69,7 +69,7 @@
           android:layout_height="wrap_content"
           android:fontFamily="@font/martel_normal"
           android:padding="16dp"
-          android:text="Descubre Cuzco, la joya colonial de los Andes peruanos, y luego explora la enigmática Machu Picchu, la ciudad perdida de los incas, en un viaje que te llevará a través de la historia y la maravilla natural de Perú."
+          android:text="Descubre la belleza de Vichayito, un encantador destino de playa en la costa norte de Perú. Disfruta de aguas cálidas, playas doradas y una atmósfera relajada. Perfecto para escapadas románticas y amantes de la naturaleza."
           android:textColor="#000000"
           android:textSize="16sp" />
 

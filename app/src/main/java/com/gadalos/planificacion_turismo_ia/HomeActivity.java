@@ -2,17 +2,20 @@ package com.gadalos.planificacion_turismo_ia;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -24,11 +27,10 @@ public class HomeActivity extends AppCompatActivity {
     private ImageButton destino2Button;
     private ImageButton destino3Button;
     private ImageButton destino4Button;
-
     private FloatingActionButton fabButton;
     private CircleImageView btnDesplegable;
     private PopupWindow customDropdown;
-    public FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     private FirebaseFirestore mFirestore;
 
     @SuppressLint("MissingInflatedId")
@@ -45,12 +47,12 @@ public class HomeActivity extends AppCompatActivity {
         destino4Button = findViewById(R.id.imageButton4);
         btnDesplegable = findViewById(R.id.btnDesplegable);
         fabButton = findViewById(R.id.fabButton);
+
         //Conexion con el Firestore
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
         // Puedes agregar acciones a tus elementos aquí
-
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,24 +128,32 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void obtenerDatos() {
-        // Recuperar datos del Intent
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            String nombre = bundle.getString("nombre");
-            String correo = bundle.getString("correo");
-            String cel    = bundle.getString("celular");
-            String fotoUrl = bundle.getString("foto");
+        if (currentUser != null) {
+            String userUid = currentUser.getUid();
 
-            // Aquí puedes usar los datos según sea necesario
-            // Por ejemplo, para mostrar la imagen en btnDesplegable usando Picasso
-            if (fotoUrl != null) {
-                //Picasso.get().load(fotoUrl).into(btnDesplegable);
-                Picasso.get().load(currentUser.getPhotoUrl()).placeholder(R.drawable.perfil_de_usuario).into(btnDesplegable);
-            }else {
-                Picasso.get().load(currentUser.getPhotoUrl()).placeholder(R.drawable.perfil_de_usuario).into(btnDesplegable);
-                //btnDesplegable.setImageResource(R.drawable.perfil_de_usuario);
-            }
+            mFirestore.collection("usuario").document(userUid)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String foto = documentSnapshot.getString("foto");
+                            Uri fotoUri = foto != null ? Uri.parse(foto) : null;
+
+                            // Mostrar la imagen en btnDesplegable usando Picasso
+                            if (fotoUri != null) {
+                                Picasso.get()
+                                        .load(fotoUri)
+                                        .resize(110, 110) // Redimensionar la imagen
+                                        .centerCrop()
+                                        .placeholder(R.drawable.perfil_de_usuario)
+                                        .into(btnDesplegable);
+                            }
+                        } else {
+                            // No se encontraron datos
+                        }
+                    }).addOnFailureListener(e -> {
+                        // Handle errors
+                    });
         }
     }
 
@@ -158,6 +168,4 @@ public class HomeActivity extends AppCompatActivity {
         Intent intent = new Intent(HomeActivity.this, UsuarioActivity.class);
         startActivity(intent);
     }
-
-
 }
