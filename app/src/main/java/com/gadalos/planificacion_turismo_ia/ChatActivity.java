@@ -18,6 +18,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.vanniktech.emoji.EmojiPopup;
 import com.vanniktech.emoji.EmojiTextView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,30 +40,33 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        //Conexion con el Firestore
+        // Conexion con el Firestore
         mAuth = FirebaseAuth.getInstance();
         mFirestore = FirebaseFirestore.getInstance();
 
         recyclerView = findViewById(R.id.recyclerView);
         edtEscribirMensaje = findViewById(R.id.escribirMensaje);
         btnEnviar = findViewById(R.id.btnEnviar);
-        emojiButton = (ImageButton) findViewById(R.id.emojiButton);
-        messageLayout = (LinearLayout) findViewById(R.id.messageLayout);
+        emojiButton = findViewById(R.id.emojiButton);
+        messageLayout = findViewById(R.id.messageLayout);
         buttonBack = findViewById(R.id.btnRegreso);
 
-        buttonBack.setOnClickListener(v -> {
-            finish();
-        });
+        buttonBack.setOnClickListener(v -> finish());
 
         chatAdapter = new ChatAdapter(new ArrayList<>());
         recyclerView.setAdapter(chatAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Message> initialMessages = new ArrayList<>();
-
-        initialMessages.add(new Message("Hola, eres un asistente virtual de viajes para llamado travis", MessageRole.SYSTEM));
-        initialMessages.add(new Message("Posees solo 4 tipos de viajes en Peru y son Vichayito, Tarapoto, Iquitos y Cusco", MessageRole.SYSTEM));
+        initialMessages.add(new Message("Hola, eres un asistente virtual de viajes llamado Travis", MessageRole.SYSTEM));
+        initialMessages.add(new Message("Posees solo 4 tipos de viajes en Perú: Vichayito, Tarapoto, Iquitos y Cusco", MessageRole.SYSTEM));
         initialMessages.add(new Message("Las respuestas que brindes deben ser concretas y cortas", MessageRole.SYSTEM));
+
+        // Añadir mensajes específicos para cada destino
+        initialMessages.addAll(readMessagesForDestination("vichayito"));
+        initialMessages.addAll(readMessagesForDestination("cusco"));
+        initialMessages.addAll(readMessagesForDestination("iquitos"));
+        initialMessages.addAll(readMessagesForDestination("tarapoto"));
 
         chatService = new ChatService(initialMessages, this);
 
@@ -72,21 +79,16 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
         // Agregar el segundo mensaje después de 2 segundos desde el primer mensaje
         Handler handler2 = new Handler();
         handler2.postDelayed(() -> {
-            chatAdapter.addMessage(new Message("¿A donde quieres viajar?", MessageRole.SYSTEM));
+            chatAdapter.addMessage(new Message("¿A dónde quieres viajar?", MessageRole.SYSTEM));
         }, 2000);
 
         EmojiPopup emojiPopup = EmojiPopup.Builder.fromRootView(findViewById(R.id.messageLayout)).build(edtEscribirMensaje);
-        emojiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                emojiPopup.toggle();
-            }
-        });
+        emojiButton.setOnClickListener(view -> emojiPopup.toggle());
 
         btnEnviar.setOnClickListener(v -> {
             String messageText = edtEscribirMensaje.getText().toString().trim();
             if (!messageText.isEmpty()) {
-                // Antes de enviar el mensaje, obten la URL de la imagen desde Firestore
+                // Antes de enviar el mensaje, obtener la URL de la imagen desde Firestore
                 obtenerUrlImagenFirestore(messageText);
             }
         });
@@ -128,6 +130,36 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
         }
     }
 
+    private List<Message> readMessagesForDestination(String destination) {
+        int resourceId = getResources().getIdentifier(destination, "raw", getPackageName());
+        return readMessagesFromRaw(resourceId);
+    }
+
+    private List<Message> readMessagesFromRaw(int rawResourceId) {
+        List<Message> messages = new ArrayList<>();
+        try {
+            InputStream inputStream = getResources().openRawResource(rawResourceId);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line).append("\n");
+            }
+
+            String fileContents = stringBuilder.toString();
+            String[] messagesArray = fileContents.split("---"); // Separador entre mensajes
+
+            for (String messageText : messagesArray) {
+                messages.add(new Message(messageText.trim(), MessageRole.SYSTEM));
+            }
+
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return messages;
+    }
     @Override
     public void onMessageReceived(Message message) {
         runOnUiThread(() -> {
@@ -141,6 +173,7 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
     public void onMessageError(String error) {
         runOnUiThread(() -> {
             Message errorMessage = new Message("Error: " + error, MessageRole.SYSTEM);
+            chatAdapter.removeLoadingMessage();
             chatAdapter.addMessage(errorMessage);
             recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
         });
