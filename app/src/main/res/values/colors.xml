@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FFB000</color>
     <color name="brown">#865D00</color>
+    <color name="colorStatusBar">#FF000000</color>
 
 </resources>

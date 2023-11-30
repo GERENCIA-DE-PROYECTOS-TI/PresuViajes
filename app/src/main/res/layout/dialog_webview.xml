@@ -1,0 +1,52 @@
+<!-- dialog_webview.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/btnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_close"
+        android:contentDescription="Close button"/>
+
+    <ImageView
+        android:id="@+id/btnReload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_reload"
+        android:layout_toStartOf="@id/btnClose"
+        android:layout_toLeftOf="@id/btnClose"
+        android:layout_toRightOf="@id/btnClose"
+        android:contentDescription="Reload button"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toStartOf="@id/btnReload"
+        android:layout_toLeftOf="@id/btnReload"
+        android:layout_toRightOf="@id/btnReload"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        />
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnReload"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
