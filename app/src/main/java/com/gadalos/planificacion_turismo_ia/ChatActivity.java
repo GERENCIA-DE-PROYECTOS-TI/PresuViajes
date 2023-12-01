@@ -1,5 +1,7 @@
 package com.gadalos.planificacion_turismo_ia;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.squareup.picasso.Picasso;
 import com.vanniktech.emoji.EmojiPopup;
 import com.vanniktech.emoji.EmojiTextView;
 
@@ -48,6 +51,9 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
         buttonBack = findViewById(R.id.btnRegreso);
 
         buttonBack.setOnClickListener(v -> {
+            Intent intent = new Intent(ChatActivity.this, IA_Presentacion.class);
+            // Iniciar la actividad
+            startActivity(intent);
             finish();
         });
 
@@ -66,6 +72,7 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
         initialMessages.add(new Message("Tarapoto es un destino maravilloso en la selva peruana. Ofrecemos un paquete de 4 días y 3 noches que incluye alojamiento en Sumaj Casa Hotel Tarapoto, desayunos, almuerzos, traslados al aeropuerto y tours de medio día y día completo. El día 1 incluye canotaje en el río Mayo, el día 2 un tour a la Laguna Azul, el día 3 una visita al Lodge Pumarinri y las cascadas de Pucayaquillo, y el día 4 una exploración de las cataratas de Ahuashiyacu. Si deseas más información, puedes encontrarlo nuestra app. ¡Disfruta de tu viaje a Tarapoto!", MessageRole.SYSTEM));
         initialMessages.add(new Message("Al finalizar te puedes despedir y desearle un buen viaje", MessageRole.SYSTEM));
         initialMessages.add(new Message("Las respuestas que brindes deben ser concretas y cortas", MessageRole.SYSTEM));
+        initialMessages.add(new Message("Nota, solo puedes responder de viajes y no otra pregunta fuera de contexto de viajes, como matematicas, te disculpas y le dices que no puedes responder ello.", MessageRole.SYSTEM));
 
         chatService = new ChatService(initialMessages, this);
 
@@ -89,25 +96,54 @@ public class ChatActivity extends AppCompatActivity implements MessageCallback {
             }
         });
         // Dentro de onCreate o donde obtienes el usuario actual
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        String userPhotoUrl = currentUser.getPhotoUrl().toString();
+        /*FirebaseUser currentUser = mAuth.getCurrentUser();
+        String userPhotoUrl = currentUser.getPhotoUrl().toString();*/
 
-        btnEnviar.setOnClickListener(v -> {
-            String messageText = edtEscribirMensaje.getText().toString().trim();
-            if (!messageText.isEmpty()) {
-                Message userMessage = new Message(messageText, MessageRole.USER);
-                userMessage.setUserPhotoUrl(userPhotoUrl);
-                chatService.sendMessage(userMessage);
-                chatAdapter.addMessage(userMessage);
-                chatAdapter.addLoadingMessage();
-                EmojiTextView emojiTextView = (EmojiTextView) LayoutInflater
-                        .from(v.getContext())
-                        .inflate(R.layout.emoji_text_view, messageLayout, false);
-                messageLayout.addView(emojiTextView);
-                edtEscribirMensaje.setText("");
-                recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
-            }
-        });
+
+        // En tu método onCreate, llama a obtenerFoto
+        btnEnviar.setOnClickListener(v -> obtenerFoto());
+    }
+
+    private void obtenerFoto() {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            String userUid = currentUser.getUid();
+
+            mFirestore.collection("usuario").document(userUid)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String foto = documentSnapshot.getString("foto");
+                            String userPhotoUrl = foto != null ? foto : null;
+
+                            // Llamar a la función que envía el mensaje después de obtener la foto
+                            enviarMensajeConFoto(userPhotoUrl);
+                        } else {
+                            // No se encontraron datos
+                        }
+                    })
+                    .addOnFailureListener(e -> {
+                        // Manejar errores
+                    });
+        }
+    }
+
+    // Agregar función para enviar el mensaje con la foto
+    private void enviarMensajeConFoto(String userPhotoUrl) {
+        String messageText = edtEscribirMensaje.getText().toString().trim();
+        if (!messageText.isEmpty()) {
+            Message userMessage = new Message(messageText, MessageRole.USER);
+            userMessage.setUserPhotoUrl(userPhotoUrl);
+            chatService.sendMessage(userMessage);
+            chatAdapter.addMessage(userMessage);
+            chatAdapter.addLoadingMessage();
+            EmojiTextView emojiTextView = (EmojiTextView) LayoutInflater
+                    .from(this)
+                    .inflate(R.layout.emoji_text_view, messageLayout, false);
+            messageLayout.addView(emojiTextView);
+            edtEscribirMensaje.setText("");
+            recyclerView.scrollToPosition(chatAdapter.getItemCount() - 1);
+        }
     }
 
     @Override
