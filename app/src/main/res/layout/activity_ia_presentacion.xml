@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <ImageButton
+        android:id="@+id/btnRegreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFEFE"
+        android:src="@drawable/retroceder" />
+
+    <ImageView
+        android:id="@+id/holaTravis"
+        android:layout_width="wrap_content"
+        android:layout_height="101dp"
+        android:layout_below="@+id/btnRegreso"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="-3dp"
+        android:layout_marginEnd="19dp"
+        android:src="@drawable/hola_travis" />
+
+    <ImageView
+        android:id="@+id/travis"
+        android:layout_width="245dp"
+        android:layout_height="230dp"
+        android:layout_below="@+id/holaTravis"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="-30dp"
+        android:layout_marginEnd="83dp"
+        android:src="@drawable/travis" />
+
+    <ImageView
+        android:id="@+id/inTravis"
+        android:layout_width="324dp"
+        android:layout_height="279dp"
+        android:layout_below="@+id/travis"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="43dp"
+        android:src="@drawable/info_travis" />
+
+    <Button
+        android:id="@+id/btnContinuar"
+        android:layout_width="172dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inTravis"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="118dp"
+        android:backgroundTint="#FFB000"
+        android:text="Continuar" />
+</RelativeLayout>

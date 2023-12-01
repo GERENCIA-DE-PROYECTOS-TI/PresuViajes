@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/ivLogoLogin"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:src="@drawable/logo_v2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/border">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvInicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/martel_bold"
+                android:gravity="center_horizontal"
+                android:text="Inicio"
+                android:textAllCaps="false"
+                android:textColor="@color/orange"
+                android:textSize="28dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRegistrese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/martel_normal"
+                android:gravity="center_horizontal"
+                android:text="Regístrese"
+                android:textColor="@color/orange"
+                android:textSize="28dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="40dp"
+            android:layout_marginTop="25dp">
+
+            <EditText
+                android:id="@+id/edtUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/arroba"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="Correo"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <EditText
+                android:id="@+id/edtContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/candado"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <TextView
+                android:id="@+id/tvOlvidoContrasena"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/martel_normal"
+                android:text="¿Olvidaste tu contraseña?"
+                android:textColor="@color/orange"
+                android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/btnIniciar"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/orange"
+                android:text="Iniciar"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/ivLogoGoogle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:src="@drawable/google" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>

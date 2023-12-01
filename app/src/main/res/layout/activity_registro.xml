@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegistroActivity"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/ivLogoRegistro"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:src="@drawable/logo_v2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/border">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="43dp">
+
+            <TextView
+                android:id="@+id/tvInicio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Inicio"
+                android:textColor="@color/orange"
+                android:fontFamily="@font/martel_normal"
+                android:textSize="28dp" />
+
+            <TextView
+                android:id="@+id/tvRegistrese2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="Regístrese"
+                android:textColor="@color/orange"
+                android:fontFamily="@font/martel_bold"
+                android:textSize="28dp"
+                android:textAllCaps="false"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="40dp">
+
+            <EditText
+                android:id="@+id/edtUsuario2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/usuario"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="Nombre"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <EditText
+                android:id="@+id/edtCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/arroba"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="Correo"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <EditText
+                android:id="@+id/edtCelular"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/telefono"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="Celular"
+                android:inputType="phone"
+                android:digits="0123456789"
+                android:maxLength="9"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <EditText
+                android:id="@+id/edtContrasena2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="13dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/candado"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <EditText
+                android:id="@+id/edtReContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_border"
+                android:drawableStart="@drawable/candado"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:ems="10"
+                android:hint="Confirme contraseña"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:backgroundTint="@color/orange"
+                android:text="Registrar"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

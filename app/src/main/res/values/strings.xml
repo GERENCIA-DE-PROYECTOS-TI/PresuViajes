@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">planificacion-turismo-ia</string>
+    <string name="app_name">PresuViajes</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="system_message">system_message</string>
+    <string name="mensaje_del_sistema">Mensaje del sistema</string>
+    <string name="_10_30_am">10:30 AM</string>
+    <string name="mensaje_del_usuario" />
+    <string name="user_message" />
+    <string name="default_web_client_id">283257827789-rfq8ojcav26sgp1p6nej3liqgaik2npj.apps.googleusercontent.com</string>
 </resources>

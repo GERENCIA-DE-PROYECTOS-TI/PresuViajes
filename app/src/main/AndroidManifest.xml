@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".EmojiApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,8 +14,54 @@
         android:theme="@style/Theme.Planificacionturismoia"
         tools:targetApi="31">
         <activity
+            android:name=".DrawerHeader"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".IA_Presentacion"
+            android:exported="false" />
+        <activity
+            android:name=".VichayitoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IquitosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TarapotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CuscoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+
+        </activity>
+        <activity
+            android:name=".CambiarContrasenaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecuperarContrasenaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UsuarioActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

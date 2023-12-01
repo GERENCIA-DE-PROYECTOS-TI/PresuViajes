@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFB000"
+    tools:context=".DrawerHeader">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textDatosTitulo"
+            android:layout_width="167dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="290dp"
+            android:text="Mis Datos"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="23sp"/>
+
+        <ImageButton
+            android:id="@+id/btnEditar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="283dp"
+            android:backgroundTint="#FFB000"
+            android:onClick="editar"
+            android:src="@drawable/editar" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="340dp"
+            android:src="@drawable/nombre_usuario" />
+
+        <TextView
+            android:id="@+id/textNombrePerfil"
+            android:layout_width="187dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="345dp"
+            android:layout_toEndOf="@+id/imageView3"
+            android:text="User Name"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/imageView3"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/correo" />
+
+        <TextView
+            android:id="@+id/textCorreoPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textNombrePerfil"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="28dp"
+            android:layout_toEndOf="@+id/imageView5"
+            android:text="user@autonoma.edu.pe"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="31dp"
+            android:layout_height="31dp"
+            android:layout_below="@+id/imageView5"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/cel" />
+
+        <TextView
+            android:id="@+id/textCelPerfil"
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textCorreoPerfil"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="28dp"
+            android:layout_toEndOf="@+id/imageView8"
+            android:text="xxxxxxxxx"
+            android:fontFamily="@font/martel_normal"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/btnCerrarSe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="245dp"
+            android:layout_marginTop="660dp"
+            android:backgroundTint="#FFB000"
+            android:onClick="cerrarSesion"
+            android:src="@drawable/salir" />
+
+        <TextView
+            android:id="@+id/textCerrarSesi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="135dp"
+            android:layout_marginTop="670dp"
+            android:fontFamily="@font/martel_normal"
+            android:text="Cerrar Sesión"
+            android:textSize="18sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="37dp"
+            android:layout_marginTop="44dp"
+            app:cardCornerRadius="150dp">
+
+            <ImageView
+                android:id="@+id/ivFotoPerfil"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/perfil_de_usuario" />
+
+        </androidx.cardview.widget.CardView>
+
+
+
+    </RelativeLayout>
+</FrameLayout>
